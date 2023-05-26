@@ -1,0 +1,93 @@
+<!-- upload.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Files</title>
+    <style>
+        body{
+            background-color:black;
+            color:white;
+        }
+        .sainath{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            gap:5rem;
+
+        }
+        .submit_button{
+            padding:3rem;
+            font-size: 18px;
+            font-family: 'Source Sans Pro', sans-serif;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            background-color: #04AA6D;
+            color: #ffffff;
+            border-color: #04AA6D;
+        
+
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .form{
+            display:flex;
+
+        }
+        .upload-button{
+            margin-right:5rem;
+        }
+        .input-text{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            gap:3rem:
+        }
+        .input-text{
+            margin-right:5rem;
+        }
+        .error{
+            color:red;
+            font-size:16px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="sainath">
+        <h1>Take A B C column, Remove Others, Combine Excel in One, Remove blank, Extract Number</h1>
+    <form class="form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="upload-button">
+        <button class ="submit_button" id="fileButton">Upload</button>
+        <input id="fileInput" type="file" name="files" accept=".xls,.xlsx" multiple required><br>
+        </div>
+
+        <div class="input-text">
+            <label for="fname">Enter File Name: </label>
+            <br>
+            <input type="text" id="fname" name="my_text_field">  
+        </div>
+
+        <div class="download-buttton">
+            <button class="submit_button" type="submit">Download</button>
+        </div>
+    </form>
+    {% if error_message %}
+    <p class="error">{{ error_message }}</p>
+     {% endif %}
+    <p>created by sainath.1page.info@gmail.com</p>
+    </div>
+    <script>
+        var fileButton = document.getElementById('fileButton')
+        var fileInput = document.getElementById('fileInput');
+
+        // Trigger the file input when the button is clicked
+        fileButton.addEventListener('click', function() {
+            fileInput.click();
+        });
+    </script>
+</body>
+</html>
